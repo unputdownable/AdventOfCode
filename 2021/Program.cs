@@ -1,13 +1,5 @@
-﻿using AoC2021.Solutions;
+﻿using AoC2021;
 using System;
-using System.Linq;
-using System.Reflection;
-
-var solutions = Assembly.GetExecutingAssembly()
-    .GetTypes()
-    .Where(t => t.IsClass && !t.IsAbstract)
-    .Where(t => typeof(ISolution).IsAssignableFrom(t))
-    .Select(t => (ISolution)Activator.CreateInstance(t));
 
 int day;
 do
@@ -16,10 +8,11 @@ do
 }
 while (!int.TryParse(Console.ReadLine(), out day));
 
-var solution = solutions.SingleOrDefault(s => s.Day == day);
+var solution = Util.GetSolution(day);
 if (solution is null)
 {
     Console.WriteLine($"No solution for day {day} :(");
+    return;
 }
 
 foreach (var part in solution.Parts)
@@ -30,9 +23,9 @@ foreach (var part in solution.Parts)
     Console.WriteLine($" {part.Description}");
     Console.WriteLine("-----------");
     Console.WriteLine();
-    Console.Write("Result: " + result);
+    Console.WriteLine("Result: " + result);
     Console.WriteLine();
 }
 
-// run solution for day
-// open folder/file with result or print result
+Console.WriteLine("Press any key to continue...");
+Console.ReadKey();

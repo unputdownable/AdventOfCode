@@ -1,6 +1,6 @@
 ﻿namespace AoC2021.Solutions.Day1;
 
-public class Day1Part1 : ISolutionPart
+public class Part1 : ISolutionPart
 {
     public string Name => "Part 1";
 
