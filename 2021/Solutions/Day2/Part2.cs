@@ -12,7 +12,7 @@ public class Part2 : ISolutionPart
     {
         var commands = Util.GetInput(2, "1.txt").Select(Command.Parse);
 
-        var submarine = new Submarine();
+        var submarine = new SubmarineWithAim();
 
         foreach (var command in commands)
         {

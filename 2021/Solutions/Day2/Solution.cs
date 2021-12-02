@@ -7,6 +7,7 @@ public class Solution : ISolution
 {
     public List<ISolutionPart> Parts => new()
     {
-        new Part1()
+        new Part1(),
+        new Part2()
     };
 }

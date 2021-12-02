@@ -13,6 +13,20 @@ public class SubmarineWithAim
 
     public void Move(Command command)
     {
+        switch (command.Name)
+        {
+            case Command.Down:
+                aim += command.Value;
+                break;
 
+            case Command.Up:
+                aim -= command.Value;
+                break;
+
+            case Command.Forward:
+                Position.Horizontal += command.Value;
+                Position.Vertical += aim * command.Value;
+                break;
+        }
     }
 }
