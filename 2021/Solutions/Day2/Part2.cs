@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AoC2021.Solutions.Day2.Navigation;
 
 namespace AoC2021.Solutions.Day2;
 
@@ -12,7 +13,7 @@ public class Part2 : ISolutionPart
     {
         var commands = Util.GetInput(2, "1.txt").Select(Command.Parse);
 
-        var submarine = new SubmarineWithAim();
+        var submarine = new Submarine(new AimNavigation());
 
         foreach (var command in commands)
         {
