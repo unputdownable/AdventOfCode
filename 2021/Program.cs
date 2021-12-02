@@ -1,31 +1,48 @@
-﻿using AoC2021;
-using System;
+﻿using System;
 
-int day;
-do
+namespace AoC2021;
+
+public class Program
 {
-    Console.Write("Enter day: ");
-}
-while (!int.TryParse(Console.ReadLine(), out day));
+    public static void Main(string[] args)
+    {
+        string input = null;
+        if (args.Length == 2)
+        {
+            if (args[0] == "-day")
+                input = args[1];
+        }
 
-var solution = Util.GetSolution(day);
-if (solution is null)
-{
-    Console.WriteLine($"No solution for day {day} :(");
-    return;
-}
+        if (!int.TryParse(input, out int day))
+        {
+            do
+            {
+                Console.Write("Enter day: ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out day));
+        }
 
-foreach (var part in solution.Parts)
-{
-    var result = part.Execute();
-    Console.WriteLine("-----------");
-    Console.WriteLine($" {part.Name}");
-    Console.WriteLine($" {part.Description}");
-    Console.WriteLine("-----------");
-    Console.WriteLine();
-    Console.WriteLine("Result: " + result);
-    Console.WriteLine();
-}
+        var solution = Util.GetSolution(day);
+        if (solution is null)
+        {
+            Console.WriteLine($"No solution for day {day} :(");
+            return;
+        }
 
-Console.WriteLine("Press any key to continue...");
-Console.ReadKey();
+        foreach (var part in solution.Parts)
+        {
+            var result = part.Execute();
+            Console.WriteLine("-----------");
+            Console.WriteLine($" Day {day}");
+            Console.WriteLine($" {part.Name}");
+            Console.WriteLine($" {part.Description}");
+            Console.WriteLine("-----------");
+            Console.WriteLine();
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+    }
+}
