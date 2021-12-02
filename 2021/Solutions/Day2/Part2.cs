@@ -2,11 +2,11 @@
 
 namespace AoC2021.Solutions.Day2;
 
-public class Part1 : ISolutionPart
+public class Part2 : ISolutionPart
 {
-    public string Name => "Part 1";
+    public string Name => "Part 2";
 
-    public string Description => "Multiply your final horizontal position by your final depth";
+    public string Description => "Multiply your final horizontal position by your final depth (with aim)";
 
     public string Execute()
     {
