@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using AoC2021.Solutions.Day2.Navigation;
+﻿namespace AoC2021.Solutions.Day2;
 
-namespace AoC2021.Solutions.Day2;
+using System.Linq;
+using AoC2021.Submarine;
+using AoC2021.Submarine.Navigation;
 
 public class Part1 : ISolutionPart
 {

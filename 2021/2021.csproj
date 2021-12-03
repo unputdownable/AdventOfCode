@@ -12,4 +12,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Inputs\3\" />
+  </ItemGroup>
+
 </Project>

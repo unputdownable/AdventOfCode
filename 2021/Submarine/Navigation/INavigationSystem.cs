@@ -1,4 +1,4 @@
-﻿namespace AoC2021.Solutions.Day2.Navigation;
+﻿namespace AoC2021.Submarine.Navigation;
 
 public interface INavigationSystem
 {
