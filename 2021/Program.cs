@@ -6,30 +6,16 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string input = null;
-        if (args.Length == 2)
-        {
-            if (args[0] == "-day")
-                input = args[1];
-        }
+        var day = Util.GetDay(args, Console.Write, Console.ReadLine);
 
-        if (!int.TryParse(input, out int day))
-        {
-            do
-            {
-                Console.Write("Enter day: ");
-            }
-            while (!int.TryParse(Console.ReadLine(), out day));
-        }
-
-        var solution = Util.GetSolution(day);
-        if (solution is null)
+        var solutionParts = Util.GetSolutionParts(day);
+        if (solutionParts.Count == 0)
         {
             Console.WriteLine($"No solution for day {day} :(");
             return;
         }
 
-        foreach (var part in solution.Parts)
+        foreach (var part in solutionParts)
         {
             var result = part.Execute();
             Console.WriteLine("-----------");

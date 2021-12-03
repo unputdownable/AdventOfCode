@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AoC2021.Submarine.Navigation;
+namespace AoC2021.Common.Navigation;
 
 public class SimpleNavigation : INavigationSystem
 {

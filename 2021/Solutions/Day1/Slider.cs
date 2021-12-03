@@ -18,10 +18,10 @@ public class Slider
     public void Slide(int offset)
     {
         var newIdx = currentIdx + offset;
-        
+
         if (newIdx < 0 || newIdx >= values.Count)
             throw new System.Exception("Out of bounds");
-        
+
         currentIdx = newIdx;
     }
 

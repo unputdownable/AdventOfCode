@@ -2,6 +2,7 @@
 
 namespace AoC2021.Solutions.Day1;
 
+[Solution(day: 1, part: 2)]
 public class Part2 : ISolutionPart
 {
     public string Name => "Part 2";

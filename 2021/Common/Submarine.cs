@@ -1,6 +1,6 @@
-﻿namespace AoC2021.Submarine;
+﻿namespace AoC2021.Common;
 
-using AoC2021.Submarine.Navigation;
+using AoC2021.Common.Navigation;
 
 public class Submarine
 {

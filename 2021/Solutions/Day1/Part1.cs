@@ -1,7 +1,6 @@
-﻿using System.Linq;
+﻿namespace AoC2021.Solutions.Day1;
 
-namespace AoC2021.Solutions.Day1;
-
+[Solution(day: 1, part: 1)]
 public class Part1 : ISolutionPart
 {
     public string Name => "Part 1";

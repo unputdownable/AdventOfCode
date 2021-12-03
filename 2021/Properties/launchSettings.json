@@ -2,7 +2,7 @@
   "profiles": {
     "2021": {
       "commandName": "Project",
-      "commandLineArgs": "-day 2"
+      "commandLineArgs": "-day 1"
     }
   }
 }

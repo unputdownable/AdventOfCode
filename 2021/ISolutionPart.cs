@@ -1,4 +1,4 @@
-﻿namespace AoC2021.Solutions;
+﻿namespace AoC2021;
 
 public interface ISolutionPart
 {

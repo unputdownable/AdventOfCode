@@ -1,12 +1,13 @@
-﻿namespace AoC2021.Solutions.Day2;
+﻿using System.Linq;
+using AoC2021.Common;
+using AoC2021.Common.Navigation;
 
-using System.Linq;
-using AoC2021.Submarine;
-using AoC2021.Submarine.Navigation;
+namespace AoC2021.Solutions.Day2;
 
+[Solution(day: 2, part: 1)]
 public class Part1 : ISolutionPart
 {
-    public string Name => "Part 1";
+    public string Name => "Submarine navigation";
 
     public string Description => "Multiply your final horizontal position by your final depth";
 
