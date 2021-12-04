@@ -41,26 +41,10 @@ public class Part1 : ISolutionPart
 
         return new Binary(gammastr);
     }
-}
 
-public enum RateType
-{
-    Gamma,
-    Epsilon
-}
-
-public class Binary
-{
-    private readonly string value;
-
-    public Binary(string value)
+    private enum RateType
     {
-        this.value = value;
+        Gamma,
+        Epsilon
     }
-
-    public char this[int idx] => value[idx];
-
-    public int Length => value.Length;
-
-    public int ToInt => Convert.ToInt32(value, 2);
 }
