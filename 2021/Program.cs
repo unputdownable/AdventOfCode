@@ -17,14 +17,14 @@ public class Program
 
         foreach (var part in solutionParts)
         {
-            var result = part.Execute();
             Console.WriteLine("-----------");
             Console.WriteLine($" Day {day}");
             Console.WriteLine($" {part.Name}");
             Console.WriteLine($" {part.Description}");
             Console.WriteLine("-----------");
             Console.WriteLine();
-            Console.WriteLine("Result: " + result);
+
+            Console.WriteLine("Result: " + part.Execute());
             Console.WriteLine();
         }
 
