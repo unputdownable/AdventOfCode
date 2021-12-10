@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -18,8 +19,8 @@ public class Part1 : ISolutionPart
             .Where(s => s.IsVertical || s.IsHorizontal)
             .ToList();
 
-        var maxX = Math.Max(segments.Max(s => s.P1.X), segments.Max(s => s.P2.X));
-        var maxY = Math.Max(segments.Max(s => s.P1.Y), segments.Max(s => s.P2.Y));
+        var maxX = segments.Max(s => s.Max.X);
+        var maxY = segments.Max(s => s.Max.Y);
         var plot = new Plot(maxX + 1, maxY + 1);
 
         foreach (var segment in segments)
@@ -29,7 +30,7 @@ public class Part1 : ISolutionPart
 
         //Console.WriteLine(plot);
 
-        return plot.IntersectionCount().ToString();
+        return plot.Intersections.ToString();
     }
 }
 
@@ -42,37 +43,23 @@ class Plot
         values = new int[width, height];
     }
 
+    public int Intersections => (from int v in values where v > 1 select v).Count();
+
     public void Add(Segment segment)
     {
-        for (var y = 0; y <= values.GetUpperBound(0); y++)
+        foreach (var p in segment.Points)
         {
-            for (var x = 0; x <= values.GetUpperBound(1); x++)
-            {
-                if (segment.Intersects(new Point(x, y)))
-                    values[x, y] += 1;
-            }
+            values[p.X, p.Y] += 1;
         }
-    }
-
-    public int IntersectionCount()
-    {
-        var sum = 0;
-        foreach (var v in values)
-        {
-            if (v > 1)
-                sum += 1;
-        }
-
-        return sum;
     }
 
     public override string ToString()
     {
         var sb = new StringBuilder();
-        for (var y = 0; y <= values.GetUpperBound(0); y++)
+        for (var y = 0; y <= values.GetUpperBound(1); y++)
         {
             var line = new StringBuilder();
-            for (var x = 0; x <= values.GetUpperBound(1); x++)
+            for (var x = 0; x <= values.GetUpperBound(0); x++)
             {
                 var v = values[x, y] == 0 ? "." : values[x, y].ToString();
                 line.Append($"{v} ");
@@ -86,14 +73,21 @@ class Plot
 
 class Segment
 {
+    List<Point> points;
+
     private Segment(Point p1, Point p2)
     {
         P1 = p1;
         P2 = p2;
+        points = ExtrapolatePoints();
     }
 
     public Point P1 { get; }
     public Point P2 { get; }
+    public List<Point> Points => points;
+    public bool IsHorizontal => P1.Y == P2.Y;
+    public bool IsVertical => P1.X == P2.X;
+    public Point Max => new Point(Math.Max(P1.X, P2.X), Math.Max(P1.Y, P2.Y));
 
     public static Segment Parse(string input)
     {
@@ -105,22 +99,23 @@ class Segment
         return new Segment(p1, p2);
     }
 
-    public bool IsHorizontal => P1.Y == P2.Y;
-    public bool IsVertical => P1.X == P2.X;
-
-    public bool Intersects(Point p)
+    List<Point> ExtrapolatePoints()
     {
-        if (p.Y == P1.Y && p.Y == P2.Y)
+        if (IsHorizontal)
         {
-            return (p.X >= P1.X && p.X <= P2.X) || (p.X <= P1.X && p.X >= P2.X);
+            return Range(P1.X, P2.X).Select(x => new Point(x, P1.Y)).ToList();
         }
-        if (p.X == P1.X && p.X == P2.X)
+        if (IsVertical)
         {
-            return (p.Y >= P1.Y && p.Y <= P2.Y) || (p.Y <= P1.Y && p.Y >= P2.Y);
+            return Range(P1.Y, P2.Y).Select(y => new Point(P1.X, y)).ToList();
         }
 
-        return false;
+        // diagonal
+
+        return null;
     }
+
+    IEnumerable<int> Range(int x1, int x2) => Enumerable.Range(Math.Min(x1, x2), Math.Abs(x1 - x2) + 1);
 
     public override string ToString()
     {
