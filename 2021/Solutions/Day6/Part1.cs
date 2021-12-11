@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 
 namespace AoC2021.Solutions.Day6;
 
@@ -14,6 +14,15 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        throw new NotImplementedException();
+        var fish = Util.GetInput(Day, "1.txt").Single()
+            .Split(',')
+            .Select(x => int.Parse(x))
+            .Select(a => new Lanternfish(a))
+            .ToList();
+
+        var simulator = new Simulator(fish);
+        simulator.Step(80);
+
+        return simulator.FishCount.ToString();
     }
 }
