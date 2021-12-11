@@ -14,13 +14,25 @@ public class Part2 : ISolutionPart
 
     public string Execute()
     {
-        var fish = Util.GetInput(Day, "1.txt").Single()
+        var lanternfish = Util.GetInput(Day, "sample.txt").Single()
             .Split(',')
             .Select(x => int.Parse(x))
             .ToList();
 
+        for (int day = 0; day < 256; day++)
+        {
+            var count = lanternfish.Count;
+            for (int i = 0; i < count; i++)
+            {
+                lanternfish[i]--;
+                if (lanternfish[i] < 0)
+                {
+                    lanternfish.Add(8);
+                    lanternfish[i] = 6;
+                }
+            }
+        }
 
-
-        return null;
+        return lanternfish.Count.ToString();
     }
 }
