@@ -20,7 +20,8 @@ class Segment
     public List<Point> Points => points;
     public bool IsHorizontal => P1.Y == P2.Y;
     public bool IsVertical => P1.X == P2.X;
-    public Point Max => new Point(Math.Max(P1.X, P2.X), Math.Max(P1.Y, P2.Y));
+    public bool IsDiagonal => Math.Abs(P1.X - P2.X) == Math.Abs(P1.Y - P2.Y);
+    public Point Max => new(Math.Max(P1.X, P2.X), Math.Max(P1.Y, P2.Y));
 
     public static Segment Parse(string input)
     {
@@ -36,19 +37,32 @@ class Segment
     {
         if (IsHorizontal)
         {
-            return Range(P1.X, P2.X).Select(x => new Point(x, P1.Y)).ToList();
+            return SmartRange(P1.X, P2.X).Select(x => new Point(x, P1.Y)).ToList();
         }
         if (IsVertical)
         {
-            return Range(P1.Y, P2.Y).Select(y => new Point(P1.X, y)).ToList();
+            return SmartRange(P1.Y, P2.Y).Select(y => new Point(P1.X, y)).ToList();
+        }
+        if (IsDiagonal)
+        {
+            var rx = SmartRange(P1.X, P2.X);
+            var ry = SmartRange(P1.Y, P2.Y);
+
+            return rx.Zip(ry).Select(z => new Point(z.First, z.Second)).ToList();
         }
 
-        // diagonal
-
-        return null;
+        throw new NotSupportedException();
     }
 
-    IEnumerable<int> Range(int x1, int x2) => Enumerable.Range(Math.Min(x1, x2), Math.Abs(x1 - x2) + 1);
+    IEnumerable<int> SmartRange(int n1, int n2)
+    {
+        if (n1 < n2)
+            return Enumerable.Range(n1, n2 - n1 + 1);
+        else if (n2 < n1)
+            return Enumerable.Range(n2, n1 - n2 + 1).Reverse();
+
+        throw new NotSupportedException();
+    }
 
     public override string ToString()
     {
