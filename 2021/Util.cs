@@ -19,9 +19,9 @@ public static class Util
             .GetTypes()
             .Where(t => t.IsClass && !t.IsAbstract)
             .Where(t => typeof(ISolutionPart).IsAssignableFrom(t))
-            .Where(t => t.GetCustomAttribute<SolutionAttribute>()?.Day == day)
-            .OrderBy(t => t.GetCustomAttribute<SolutionAttribute>()?.Part)
             .Select(t => (ISolutionPart)Activator.CreateInstance(t))
+            .Where(i => i.Day == day)
+            .OrderBy(i => i.Part)
             .ToList();
 
         return parts;

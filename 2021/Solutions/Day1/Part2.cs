@@ -2,12 +2,15 @@
 
 namespace AoC2021.Solutions.Day1;
 
-[Solution(day: 1, part: 2)]
 public class Part2 : ISolutionPart
 {
     public string Name => "Part 2";
 
     public string Description => "The number of times the sum of measurements in this sliding window increases";
+
+    public int Day => 1;
+
+    public int Part => 2;
 
     public string Execute()
     {

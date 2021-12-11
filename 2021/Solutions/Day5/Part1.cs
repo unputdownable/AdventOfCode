@@ -2,12 +2,15 @@
 
 namespace AoC2021.Solutions.Day5;
 
-[Solution(day: 5, part: 1)]
 public class Part1 : ISolutionPart
 {
     public string Name => "Hydrothermal vents";
 
     public string Description => "At how many points do at least two lines overlap";
+
+    public int Day => 5;
+
+    public int Part => 1;
 
     public string Execute()
     {

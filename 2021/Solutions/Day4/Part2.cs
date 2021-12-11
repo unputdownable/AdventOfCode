@@ -3,12 +3,15 @@ using System.Linq;
 
 namespace AoC2021.Solutions.Day4;
 
-[Solution(day: 4, part: 2)]
 public class Part2 : ISolutionPart
 {
     public string Name => "Submarine Bingo";
 
     public string Description => "Find and score the last winning bingo board";
+
+    public int Day => 4;
+
+    public int Part => 2;
 
     public string Execute()
     {

@@ -4,12 +4,15 @@ using System.Linq;
 
 namespace AoC2021.Solutions.Day3;
 
-[Solution(day: 3, part: 2)]
 public class Part2 : ISolutionPart
 {
     public string Name => "Binary Diagnostic";
 
     public string Description => "Life support";
+
+    public int Day => 3;
+
+    public int Part => 2;
 
     public string Execute()
     {

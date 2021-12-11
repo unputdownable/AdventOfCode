@@ -1,11 +1,14 @@
 ﻿namespace AoC2021.Solutions.Day1;
 
-[Solution(day: 1, part: 1)]
 public class Part1 : ISolutionPart
 {
     public string Name => "Part 1";
 
     public string Description => "The number of times a depth measurement increases";
+
+    public int Day => 1;
+
+    public int Part => 1;
 
     public string Execute()
     {
