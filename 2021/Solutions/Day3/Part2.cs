@@ -16,7 +16,7 @@ public class Part2 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(3, "1.txt")
+        var input = Util.GetInput(Day)
             .Select(value => new Binary(value))
             .ToList();
 

@@ -14,7 +14,7 @@ public class Part2 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(1, "1.txt").Select(int.Parse).ToList();
+        var input = Util.GetInput(Day).Select(int.Parse).ToList();
         var slider = new Slider(input, 3);
 
         int? prevSum = null;

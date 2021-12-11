@@ -14,7 +14,7 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(5, "1.txt");
+        var input = Util.GetInput(Day);
         var segments = input.Select(Segment.Parse)
             .Where(s => s.IsVertical || s.IsHorizontal)
             .ToList();

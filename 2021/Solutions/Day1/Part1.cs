@@ -12,7 +12,7 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(1, "1.txt");
+        var input = Util.GetInput(Day);
 
         int? prev = null;
         var count = 0;

@@ -14,7 +14,7 @@ public class Part2 : ISolutionPart
 
     public string Execute()
     {
-        var ages = Util.GetInput(Day, "1.txt").Single()
+        var ages = Util.GetInput(Day).Single()
             .Split(',')
             .Select(x => int.Parse(x));
 

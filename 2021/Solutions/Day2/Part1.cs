@@ -16,7 +16,7 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        var commands = Util.GetInput(2, "1.txt").Select(Command.Parse);
+        var commands = Util.GetInput(Day).Select(Command.Parse);
 
         var submarine = new Submarine(new SimpleNavigation());
 

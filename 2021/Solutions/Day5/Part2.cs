@@ -14,7 +14,7 @@ public class Part2 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(5, "1.txt");
+        var input = Util.GetInput(Day);
         var segments = input.Select(Segment.Parse).ToList();
 
         var maxX = segments.Max(s => s.Max.X);

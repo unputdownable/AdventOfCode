@@ -8,9 +8,14 @@ namespace AoC2021;
 
 public static class Util
 {
-    public static List<string> GetInput(int day, string name)
+    public static List<string> GetInput(int day)
     {
-        return File.ReadAllLines(Path.Combine("Inputs", day.ToString(), name)).ToList();
+        return GetInput(day, "1");
+    }
+
+    public static List<string> GetInput(int day, string name, string extension = "txt")
+    {
+        return File.ReadAllLines(Path.Combine("Inputs", day.ToString(), $"{name}.{extension}")).ToList();
     }
 
     public static List<ISolutionPart> GetSolutionParts(int day)

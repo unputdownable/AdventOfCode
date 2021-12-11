@@ -15,7 +15,7 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        var input = Util.GetInput(4, "1.txt");
+        var input = Util.GetInput(Day);
         var bingo = Bingo.Parse(input);
 
         while (bingo.HasNumbers)

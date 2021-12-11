@@ -14,7 +14,7 @@ public class Part1 : ISolutionPart
 
     public string Execute()
     {
-        var fish = Util.GetInput(Day, "1.txt").Single()
+        var fish = Util.GetInput(Day).Single()
             .Split(',')
             .Select(x => int.Parse(x))
             .Select(a => new Lanternfish(a))
